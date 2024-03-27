@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>submit recipe</title>
+</head>
+<body>
+    <%-include("_nav.ejs")%>
+    <section class="flex flex-col justify-start items-center p-14 gap-y-4">
+        <h1 class="font-bold text-3xl">Share your delicious recipe!</h1>
+        <p class="font-medium text-gray-600">Share your delicious recipe here, so that others can taste that goodness!</p>
+        <form class="flex flex-col gap-y-4 w-full lg:px-40" action="/submit-recipe" method="POST" enctype="multipart/form-data">
+            <label class="font-medium" for="title">Recipe title</label>
+            <input class="border px-2 py-1 rounded-sm outline-none" type="text" name="title" id="title" required>
+            <label class="font-medium" for="description">Recipe description</label>
+            <textarea class="border px-2 py-1 rounded-sm outline-none" name="description" id="description" cols="30" rows="5" required></textarea>
+            <label class="font-medium" for="description">Recipe procedure</label>
+            <textarea class="border px-2 py-1 rounded-sm outline-none" name="procedure" id="procedure" cols="30" rows="5" required></textarea>
+            <label class="font-medium" for="ingredients">Ingredients</label>
+            <input class="border px-2 py-1 rounded-sm outline-none" type="text" name="ingredients" id="ingredients" required>
+            <label class="font-medium" for="image-file">Dish image</label>
+            <input type="file" name="image-file" id="image-file" required>
+            <div class="max-w-[100px] flex flex-row justify-between items-center gap-2">
+                <button type="submit" class="px-6 py-2 bg-black border border-black text-white rounded-sm">share</button>
+                <a href="/" class="border border-black font-medium rounded-sm px-6 py-2 hover:bg-black hover:text-white duration-150">cancel</a>
+            </div>
+        </form>
+    </section>
+</body>
+</html>

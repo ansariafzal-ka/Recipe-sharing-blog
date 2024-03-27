@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <title>Recipie Sharing Blog</title>
+</head>
+<body>
+    <%-include("_nav.ejs")%>
+    <section class="relative bg-cover bg-center flex flex-col justify-center items-center p-36 text-white" style="background-image: url('/bg.png');">
+        <h1 class="text-4xl font-bold mb-4 z-10">Welcome to Recipe Sharing Blog</h1>
+        <p class="text-lg mb-8 z-10">Explore delicious recipes shared by our community!</p>
+        <a href="/submit" class="px-4 py-2 bg-black text-white rounded-sm z-10">share recipe</a>
+        <div class="absolute inset-0 bg-black opacity-30"></div>
+    </section>
+    
+    <section class="px-10 py-2 mt-4 mb-4">
+        <h1 class="text-xl mb-4 font-medium">All Recipes</h1>
+        <div class="grid grid-cols-6 gap-4">
+            <% recipes.forEach(recipe => { %>
+                <a href="/recipe/<%= recipe._id %>" class="col-span-1">
+                    <div class="max-w-[200px] h-[300px] flex flex-col gap-y-4 cursor-pointer hover:scale-110 hover:text-blue-800 duration-200">
+                        <img src="/uploads/<%= recipe.img %>" alt="food-image" class="w-full h-full object-cover rounded-md">
+                        <h1 class="font-medium"><%= recipe.title %></h1>
+                    </div>
+                </a>
+            <% }); %>
+        </div>
+    </section>
+</body>
+</html>
